@@ -21,20 +21,22 @@ feature_matrix = vectorizer.fit_transform(features)
 @app.route('/',methods=["POST"])
 def recommend():
     data =requests.json()
-    names = data.get('names',[])
-    genres = data.get('genre',[])
+    names = data.get('name',[])
+    genres = data.get('genres',[])
     tags = data.get('tags',[])
+
+
 
 
 
     # User preferences (example)
     user_preferences = {
-        'Genres': ['Drama','Crime','Thriller'],
+        'Genres': ' '.join(genres),
         'Actors': ['Joaquin Phoenix', 'Robert De Niro', 'Zazie Beetz', 'Frances Conroy']
 ,
         'Director': ['José Esteban Alenda', 'César Esteban Alenda'],
-        'Tags':['Dark Comedies','Crime Comedies','Dramas','Comedies','Crime Dramas','Swedish Movies'
-]
+        'Tags': ' '.join(tags),
+
     }
 
     # Create user profile
